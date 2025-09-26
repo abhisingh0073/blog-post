@@ -10,7 +10,7 @@
   <div class="card p-4 custom-card">
     <h1 class="text-center">Signup</h1>
     <div class="container mb-4">
-      <form action="/user/signup", method="post" >
+      <form action="/user/signup", method="post" enctype="multipart/form-data">
         <div class="mb-4">
           <label class="form-label">Full Name</label>
           <input type="text" class="form-control" id="fullName" name="fullName">
@@ -25,7 +25,7 @@
         </div>
         <div class="mb-3">
           <label for="profileUrl" class="form-label">Profile Photo</label>
-          <input type="file" class="form-control" id="profileUrl" name="profileUrl">
+          <input type="file" class="form-control" id="profileUrl" name="profileUrl" accept="image/*">
         </div>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary">Signup</button>
