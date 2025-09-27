@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head')  %>
+    <title>Signup</title>
+</head>
+<body>
+
+    <%- include('./partials/nav')  %>
+   
+    <%- include('./createpost') %>
+
+  
+  <div class="container my-4" style="max-width: 800px;">
+  <!-- Post Section -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h2 class="card-title mb-4"><%= post.postTitle %></h2>
+      <img src="<%= post.coverImage %>" alt="Cover Image" 
+           class="img-fluid rounded mb-3" 
+           style="max-height: 400px; object-fit: cover; width: 100%;">
+      <div class="card-text" style="white-space: pre-wrap; line-height: 1.6;">
+        <%= post.postContent %>
+        <p class="d-flex align-item-center text-danger">End</p>
+      </div>
+    </div>
+
+    <!-- Author section -->
+    <a href="/profile/<%= post.createdBy._id %>" 
+   class="shadow-sm p-3 d-flex align-items-center gap-3 m-3 text-decoration-none text-dark" 
+   style="max-width: 400px;">
+  <img src="<%= post.createdBy.profileUrl %>" 
+       alt="Author Profile" 
+       class="rounded-circle border border-2 border-primary"
+       style="width: 40px; height: 40px; object-fit: cover; aspect-ratio: 1/1;">
+  <div>
+    <p class="mb-1 fw-bold">Author</p>
+    <span class="text-muted"><%= post.createdBy.fullName %></span>
+  </div>
+</a>
+
+ </div>
+</div>
+
+  <!-- Author Section -->
+  <!-- <div class="card shadow-sm p-3 d-flex align-items-center flex-row gap-3" style="max-width: 400px;">
+    <img src="<%= post.createdBy.profileUrl %>" 
+         alt="Author Profile" 
+         class="rounded-circle border border-2 border-primary"
+         style="width: 60px; height: 60px; object-fit: cover; aspect-ratio: 1/1;">
+    <div>
+      <p class="mb-1 fw-bold">Author</p>
+      <span class="text-muted"><%= post.createdBy.fullName %></span>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+<!-- <style>
+  .no-resize {
+    resize: none;
+    overflow: hidden;
+  }
+</style> -->
+    
+
+
+
+
+    <%- include('./partials/scripts')  %>
+</body>
+</html>

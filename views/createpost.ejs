@@ -14,7 +14,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="postForm">
+        <form action="/post/create" method="post" id="postForm" enctype="multipart/form-data">
           <div class="mb-3">
             <input type="text" class="form-control" id="postTitle" name="postTitle" placeholder="Enter post title">
           </div>
@@ -28,11 +28,11 @@
           <div class="mb-3">
             <label class="form-label d-block fw-bold">Visibility</label>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="visibility" id="public" value="public" >
+              <input class="form-check-input" type="radio" name="visibility" id="public" value="true" >
               <label class="form-check-label text-success fw-medium" for="public">Public</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="visibility" id="private" value="private" checked>
+              <input class="form-check-input" type="radio" name="visibility" id="private" value="false" checked>
               <label class="form-check-label text-danger fw-medium" for="private">Private</label>
             </div>
           </div>

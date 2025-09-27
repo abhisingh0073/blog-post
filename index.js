@@ -2,9 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const userRoute = require('./routes/user')
+const userRoute = require('./routes/user');
+const postRoute = require('./routes/post')
 const cookieParser = require('cookie-parser');
 const { checkForAuthenticationCookie } = require('./middlewares/authentication');
+const Post = require('./models/post');
 
 const PORT = 3000;
 
@@ -19,15 +21,15 @@ app.use(checkForAuthenticationCookie("token"));
 app.use(express.static(path.resolve('./public')));
 
 
-app.get('/', (req, res) => {
+app.get('/',async (req, res) => {
+    const allPost = (await Post.find({visibility: 'true'}).populate("createdBy", "fullName profileUrl"))
     return res.render('home', {
-        user: req.user
+        user: req.user,
+        posts: allPost,
     })
 });
 app.use('/user', userRoute);
-app.use('/post', (req, res) => {
-    return res.render('post');
-})
+app.use('/post', postRoute);
 
 
 

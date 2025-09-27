@@ -31,28 +31,6 @@ router.post('/login', async (req, res) => {
 
 
 
-// router.post('/signup', async (req, res) => {
-//     const {fullName, email, password, profileUrl} = req.body;
-
-//     bcrypt.genSalt(10, (err, salt) => {
-//         bcrypt.hash(password, salt, async(err, hash) => {
-
-//             await User.create({
-//                               fullName,
-//                               email,
-//                               password: hash,
-//                               profileUrl,
-//                           });
-
-//         })
-//     })
-
-    
-
-//     return res.redirect('/');
-
-// });
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadPath = path.join(__dirname, '../public/uploads/temp');
