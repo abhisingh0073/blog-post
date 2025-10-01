@@ -39,21 +39,69 @@
   </div>
 </a>
 
+<hr>
+
+<!-- comment section -->
+<div class="m-3">
+  <h5>Comments (<%= comments.length %>)</h5>
+
+  <div class="d-flex align-items-center gap-2 w-100 mt-3" style="max-width: 600px;">
+
+  <!-- Profile Image -->
+   <% if (locals.user) { %>
+    <a href="/author/<%= user._id %>">
+    <img src="<%= user.profileUrl %>" 
+         alt="Profile" 
+         class="rounded-circle border border-2 border-primary" 
+         style="width: 40px; height: 40px; object-fit: cover;">
+  </a>
+
+  <!-- Comment Form -->
+  <form action="/post/comment/<%= post._id %>" method="post" class="d-flex align-items-center flex-grow-1 gap-2">
+    <input type="text" 
+           name="content" 
+           class="form-control border-bottom border-2 border-secondary rounded-0" 
+           placeholder="Write a comment...">
+    <button class="btn btn-primary" type="submit">Send</button>
+  </form>
+   <% } else{%>
+    
+    <p><a href="/user/login" style="text-decoration: none;">Login</a> to comment on this post</p>
+    <%} %>
+  
+</div>
+
+
+<!-- all comments -->
+<div class="mt-5">
+  <% comments.forEach(comment => {%>
+     
+    <div class="d-flex align-items-start gap-2 mt-2">
+      <a href="/author/<%= comment.createdBy._id %>">
+          <img src="<%= comment.createdBy.profileUrl %>" 
+             alt="Profile" 
+             class="rounded-circle border border-2 border-primary"
+             style="width: 30px; height: 30px; object-fit: cover;">
+      </a>
+    <div>
+    <div class="fw-bold small"><%= comment.createdBy.fullName %></div>
+      <p class="mb-0 text-body"><%= comment.content %></p>
+    </div>
+</div>
+<hr>
+
+
+    <% }) %>
+</div>
+
+
+
+</div>
+
  </div>
 </div>
 
-  <!-- Author Section -->
-  <!-- <div class="card shadow-sm p-3 d-flex align-items-center flex-row gap-3" style="max-width: 400px;">
-    <img src="<%= post.createdBy.profileUrl %>" 
-         alt="Author Profile" 
-         class="rounded-circle border border-2 border-primary"
-         style="width: 60px; height: 60px; object-fit: cover; aspect-ratio: 1/1;">
-    <div>
-      <p class="mb-1 fw-bold">Author</p>
-      <span class="text-muted"><%= post.createdBy.fullName %></span>
-    </div>
-  </div>
-</div> -->
+ 
 
 
 

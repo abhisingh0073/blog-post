@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Edit Post</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    <div class="container my-5" style="max-width: 600px;">
+        <h2>Edit Post</h2>
+        <form action="/post/update/<%= post._id %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="postTitle" class="form-label">Title</label>
+                <input type="text" id="postTitle" name="postTitle" value="<%= post.postTitle %>" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="postContent" class="form-label">Content</label>
+                <textarea id="postContent" name="postContent" class="form-control" rows="5" required><%= post.postContent %></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="coverImage" class="form-label">Cover Image</label>
+                <input type="file" id="coverImage" name="coverImage" class="form-control">
+                <% if (post.coverImage) { %>
+                  <img src="<%= post.coverImage %>" alt="cover" style="width: 100px; margin-top: 10px;">
+                <% } %>
+            </div>
+
+            <div class="mb-3">
+            <label class="form-label d-block fw-bold">Visibility</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="visibility" id="public" value="true" <%= post.visibility ? "checked" : "" %> >
+              <label class="form-check-label text-success fw-medium" for="public">Public</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="visibility" id="private" value="false" <%= post.visibility ? "" : "checked" %>>
+              <label class="form-check-label text-danger fw-medium" for="private">Private</label>
+            </div>
+          </div>
+
+            <button type="submit" class="btn btn-primary">Update Post</button>
+        </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>
+
+
+    <%- include('./partials/scripts') %>
+</body>
+</html>

@@ -15,7 +15,7 @@ const postSchema = new Schema({
     },
     coverImage: {
         type: String,
-        default:'./public/coverimage icon.jpeg'
+        default:'/uploads/default.jpeg'
     },
     createdBy: {
         type: Schema.Types.ObjectId,
